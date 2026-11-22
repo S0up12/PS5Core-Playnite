@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="NotificationsMenuBorder" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource PSPanelBrush}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Width" Value="640" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,24,24,24" />
+        <Setter Property="Padding" Value="24" />
+        <Setter Property="Effect">
+            <Setter.Value><DropShadowEffect ShadowDepth="0" BlurRadius="40" Opacity="0.5" Color="Black" /></Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,24,-24,24" To="0,24,24,24" Duration="0:0:0.22">
+                            <ThicknessAnimation.EasingFunction><CubicEase EasingMode="EaseOut" /></ThicknessAnimation.EasingFunction>
+                        </ThicknessAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.18" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="NotificationsMenuItemButton" BasedOn="{StaticResource {x:Type ButtonEx}}" TargetType="ButtonEx">
+        <Setter Property="Margin" Value="0,2" />
+        <Setter Property="MinHeight" Value="64" />
+        <Setter Property="FontSize" Value="{DynamicResource PSFontSizeMenu}" />
+        <Setter Property="Padding" Value="24,0" />
+        
+    </Style>
+    
+    <Style x:Key="NotificationsMenuDismissButton" BasedOn="{StaticResource {x:Type ButtonEx}}" TargetType="ButtonEx">
+        <Setter Property="Margin" Value="0,2,0,16" />
+        <Setter Property="MinHeight" Value="64" />
+        <Setter Property="FontSize" Value="{DynamicResource PSFontSizeMenu}" />
+        <Setter Property="Padding" Value="24,0" />
+    </Style>
+
+    <Style x:Key="NotificationsMenuHeaderText" BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock" >
+        <Setter Property="FontFamily" Value="{DynamicResource PSFont}" />
+        <Setter Property="FontSize" Value="{DynamicResource PSFontSizeMenuHeader}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="8,8,0,24" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,174 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="PSPillButton" TargetType="ButtonEx">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Height" Value="78" />
+        <Setter Property="MinWidth" Value="371" />
+        <Setter Property="Margin" Value="0,0,15,0" />
+        <Setter Property="Background" Value="{DynamicResource PSPillFillBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PSTextPrimaryBrush}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonEx">
+                    <Grid x:Name="Root" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform><ScaleTransform x:Name="Scale" /></Grid.RenderTransform>
+                        <Border CornerRadius="39" Background="{TemplateBinding Background}"
+                                BorderBrush="{DynamicResource PSPillStrokeBrush}" BorderThickness="2" />
+                        <Border x:Name="FocusFill" CornerRadius="39" Background="#FFFBFBFB" Opacity="0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="28" Opacity="0.5" Color="White" />
+                            </Border.Effect>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32,0">
+                            <TextBlock FontFamily="{DynamicResource PSFont}" FontWeight="SemiBold"
+                                       FontSize="{DynamicResource PSFontSizePill}"
+                                       Foreground="{TemplateBinding Foreground}" VerticalAlignment="Center">
+                                <ContentPresenter />
+                            </TextBlock>
+                        </StackPanel>
+                        <ContentControl x:Name="Hint" ContentTemplate="{TemplateBinding InputHint}" Height="30"
+                                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-46"
+                                        Focusable="False" IsHitTestVisible="False" Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Hint" Property="Visibility" Value="Visible" /></Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#FF101011" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.04" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.04" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5" /></Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PSCircleButton" TargetType="ButtonEx" BasedOn="{StaticResource PSPillButton}">
+        <Setter Property="MinWidth" Value="84" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonEx">
+                    <Grid x:Name="Root" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform><ScaleTransform x:Name="Scale" /></Grid.RenderTransform>
+                        <Border CornerRadius="39" Background="{TemplateBinding Background}"
+                                BorderBrush="{DynamicResource PSPillStrokeBrush}" BorderThickness="2" />
+                        <Border x:Name="FocusFill" CornerRadius="39" Background="#FFFBFBFB" Opacity="0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="28" Opacity="0.5" Color="White" />
+                            </Border.Effect>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Margin="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </StackPanel>
+                        <ContentControl x:Name="Hint" ContentTemplate="{TemplateBinding InputHint}" Height="30"
+                                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-46"
+                                        Focusable="False" IsHitTestVisible="False" Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Hint" Property="Visibility" Value="Visible" /></Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#FF101011" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.04" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.04" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5" /></Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PSMoreButton" TargetType="ButtonEx" BasedOn="{StaticResource PSCircleButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonEx">
+                    <Grid x:Name="Root" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform><ScaleTransform x:Name="Scale" /></Grid.RenderTransform>
+                        <Border CornerRadius="39" Background="{TemplateBinding Background}"
+                                BorderBrush="{DynamicResource PSPillStrokeBrush}" BorderThickness="2" />
+                        <Border x:Name="FocusFill" CornerRadius="39" Background="#FFFBFBFB" Opacity="0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="28" Opacity="0.5" Color="White" />
+                            </Border.Effect>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Margin="{TemplateBinding Padding}">
+                            <Ellipse Width="8" Height="8" Margin="3,0" Fill="{TemplateBinding Foreground}" />
+                            <Ellipse Width="8" Height="8" Margin="3,0" Fill="{TemplateBinding Foreground}" />
+                            <Ellipse Width="8" Height="8" Margin="3,0" Fill="{TemplateBinding Foreground}" />
+                        </StackPanel>
+                        <ContentControl x:Name="Hint" ContentTemplate="{TemplateBinding InputHint}" Height="30"
+                                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-46"
+                                        Focusable="False" IsHitTestVisible="False" Visibility="Collapsed" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Hint" Property="Visibility" Value="Visible" /></Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" Value="#FF101011" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1.04" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1.04" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusFill" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.12" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.15" />
+                                        <DoubleAnimation Storyboard.TargetName="Scale" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5" /></Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- alias: old key still resolves -->
+    <Style x:Key="ButtonBottomMenu" TargetType="ButtonEx" BasedOn="{StaticResource PSPillButton}" />
+</ResourceDictionary>

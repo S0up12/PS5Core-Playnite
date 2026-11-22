@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- On-screen key: 72 px square, 8 px radius, white fill with dark text when focused. -->
+    <Style x:Key="TextInputButton" BasedOn="{StaticResource {x:Type ButtonEx}}" TargetType="ButtonEx">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="MinWidth" Value="72" />
+        <Setter Property="MinHeight" Value="72" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonEx">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border x:Name="Key" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <TextBlock Style="{DynamicResource TextBlockBaseStyle}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       Margin="{TemplateBinding Padding}">
+                                <ContentPresenter />
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Key" Property="Background" Value="{DynamicResource PSTextPrimaryBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PSTextInverseBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Key" Property="Background" Value="{DynamicResource PSTextPrimaryBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource PSTextInverseBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextInputCheckbox" BasedOn="{StaticResource {x:Type CheckBoxEx}}" TargetType="CheckBoxEx">
+        <Setter Property="Margin" Value="0,8,0,8" />
+    </Style>
+
+    <!-- Search box: 80 px tall, at least 1500 px wide, 30 px text -->
+    <Style x:Key="TextInputTextbox" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="Margin" Value="0,0,0,50" />
+        <Setter Property="Height" Value="80" />
+        <Setter Property="MinWidth" Value="1500" />
+        <Setter Property="FontSize" Value="{DynamicResource PSFontSizeSettingsRow}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="TextInputOptionsBorder" TargetType="Border">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PSPanelCorner}" />
+    </Style>
+
+    <Style x:Key="TextInputKeysBorder" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource PSPanelBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource PSPanelCorner}" />
+    </Style>
+</ResourceDictionary>
