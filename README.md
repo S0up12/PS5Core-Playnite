@@ -68,3 +68,7 @@ Rename-Item PS5Core_1.0.zip PS5Core_1.0.pthm
 - Visual direction inspired by the community Figma file [PS5 Interactive UI](https://www.figma.com/design/1obxzkvpdupnNEyQkaYw7W/PS5-Interactive-UI--Community-). No files from it are included.
 - Screenshots show game art that belongs to its respective owners.
 - This is an unofficial fan project. PlayStation and PS5 are trademarks of Sony Interactive Entertainment Inc. This project is not affiliated with or endorsed by Sony.
+
+## Add-on database
+
+`addon/` contains the manifest and installer manifest for the Playnite add-on browser. Submissions to the official database are currently on hold, so the theme is distributed through GitHub releases for now.

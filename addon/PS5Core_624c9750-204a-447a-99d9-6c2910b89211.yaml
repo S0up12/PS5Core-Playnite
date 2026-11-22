@@ -1,0 +1,14 @@
+AddonId: 'PS5Core_624c9750-204a-447a-99d9-6c2910b89211'
+Type: ThemeFullscreen
+Name: 'PS5 Core'
+Author: 'S0up12'
+ShortDescription: 'PlayStation 5-inspired fullscreen theme with portrait cover cards and an animated selection ring, tuned for 21:9 ultrawide.'
+Description: 'Horizontal row of rounded portrait cards, a selected card that grows from its top edge, a fading orbit selection ring, a card flow-in intro, PS5-style top bar and pill buttons, and high-contrast focus states in menus.'
+InstallerManifestUrl: https://raw.githubusercontent.com/S0up12/PS5Core-Playnite/main/addon/installer.yaml
+SourceUrl: https://github.com/S0up12/PS5Core-Playnite
+Tags: ['ps5', 'playstation', 'ultrawide', 'portrait-cards']
+Links:
+    Source: https://github.com/S0up12/PS5Core-Playnite
+Screenshots:
+    - Thumbnail: https://raw.githubusercontent.com/S0up12/PS5Core-Playnite/main/docs/screenshots/home.png
+      Image: https://raw.githubusercontent.com/S0up12/PS5Core-Playnite/main/docs/screenshots/home.png
